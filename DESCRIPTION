@@ -1,0 +1,11 @@
+Package: tagim
+Type: Package
+Title: Add tags to image metadata
+Version: 0.1.0
+Author: Stanislas Mahussi Gadaho
+Maintainer: Stanislas Mahussi Gandao <gandahostanmah@gmail.com>
+Description: tagim helps to manage image metadata. Users 
+    have also a graphical interface based on shiny.
+License: MIT
+Encoding: UTF-8
+LazyData: true
