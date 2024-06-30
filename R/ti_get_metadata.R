@@ -6,8 +6,8 @@ get_metadata <- function(path){
     stop("Path must be a directory path or file path")
   }
 
-  exiftoll_path <- system.file(package = "tagim")
-  cmd <- paste(normalizePath(paste0(exiftoll_path, "/exiftool/exiftool.exe")), shQuote(normalizePath(path)))
+  exiftool_path <- system.file(package = "tagim")
+  cmd <- paste(normalizePath(paste0(exiftool_path, "/exiftool/exiftool.exe")), shQuote(normalizePath(path)))
 
   metadata_df <- system(cmd, intern = T)
 
@@ -16,7 +16,7 @@ get_metadata <- function(path){
     idx <- idx + 1
     tgs <- strsplit(tgs, split = ":")
     colname_ <- tgs[[1]][1]; val <- tgs[[1]][2]
-    df_ <- data.frame(val); colnames(df_) <- colname_
+    df_ <- data.frame(val); colnames(df_) <- trimws(colname_)
     out_df[[idx]] <- df_
   }
   rm(idx, tgs, colname_, df_, val)
@@ -30,6 +30,11 @@ get_metadata <- function(path){
 
 #' Extract image metadata
 #'
+#' The function extracts metadata from image files located at a
+#' specified path. The function can handle both individual image files and
+#' directories containing multiple images. It uses the exiftool utility to read
+#' the metadata and can optionally save the extracted metadata to a CSV file.
+#'
 #' @param path a character vector of full path names. Either a directory path or file path. If the `path` specified is a
 #' directory, the function looks for all image (.jpeg/JPEG, jpg/JPG) inside and extract
 #' the tags and bind in a single data.frame.
@@ -40,12 +45,29 @@ get_metadata <- function(path){
 #' If left empty and `save_file` is TRUE, the default name is metadata.csv. Note that
 #' the file is not saved if `save_file` is FALSE, even if the file name is provided.
 #'
-#' @return
+#' @return data.frame
 #'
 #' @examples
 #'
+#' # Define the URL of the image to be downloaded
+#' image_url <- "https://cdn.britannica.com/02/162502-050-FEEA94DE/Vulture.jpg"
+#'
+#' # Define the path to save the downloaded image
+#' temp_image_path <- file.path(tempdir(), "image.jpg")
+#'
+#' # Download the image from the internet
+#' download.file(url = image_url, destfile = temp_image_path, mode = "wb")
+#'
+#' # Extract metadata from the downloaded image
+#' metadata <- ti_get_metadata(path = temp_image_path)
+#'
+#' # Extract metadata from all images in a directory (non-recursive)
+#' metadata_dir <- ti_get_metadata(path = tempdir(), recursive = FALSE)
+#'
 #' @export
-ti_get_metadata <- function(path, recursive = F, save_file = F, file_name = "") {
+ti_get_metadata <- function(path, recursive = FALSE,
+                            save_file = FALSE,
+                            file_name = "") {
 
   if (dir.exists(path)) {
     img_in_path <- list.files(path = path, pattern = "\\.(jpe?g|JPE?G)$",
@@ -59,7 +81,7 @@ ti_get_metadata <- function(path, recursive = F, save_file = F, file_name = "") 
       )
       rbind_list[[img]] <- get_metadata(path = img_in_path[[img]])
     }
-    metadata_df <- do.call(rbind, rbind_list)
+    metadata_df <- ti_stack_df(rbind_list)
 
   } else if (file.exists(path)) {
     metadata_df <- get_metadata(path = path)
@@ -74,7 +96,6 @@ ti_get_metadata <- function(path, recursive = F, save_file = F, file_name = "") 
     }else{
       stop("Specify a correct file name (ended by .csv)")
     }
-
 
     write.csv(x = metadata_df, file = file_name)
     message(paste("File saved to ", file_name))
