@@ -65,7 +65,7 @@ get_metadata <- function(path){
 #' metadata_dir <- ti_get_metadata(path = tempdir(), recursive = FALSE)
 #'
 #' @export
-ti_get_metadata <- function(path, recursive = FALSE,
+mm_get_metadata <- function(path, recursive = FALSE,
                             save_file = FALSE,
                             file_name = "") {
 

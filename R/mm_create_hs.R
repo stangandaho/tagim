@@ -1,10 +1,10 @@
 #' Create or Add Hierarchical Subject Values in Image Metadata
 #'
-#' @inheritParams ti_get_hs
+#' @inheritParams mm_get_hs
 #' @param value named character vector specifying the new hierarchical subjects to add.
 #' Each value must have a parent specified as the name, e.g c("Species" = "Vulture").
 #'
-#' @inheritParams ti_remove_hs
+#' @inheritParams mm_remove_hs
 #' @export
 #'
 #' @examples
@@ -26,7 +26,7 @@
 #' # Get Hierarchical Subject from the image - Before use ti_create_hs()
 #' ti_get_hs(path = temp_image_path) #==> "Species|Vulture"
 #'
-ti_create_hs <- function(path, value = c()) {
+mm_create_hs <- function(path, value = c()) {
 
   exiftoll_path <- system.file(package = "tagim")
   all_have_name <- unlist(lapply(names(value), FUN = function(x){is.null(x) | x == ""}))

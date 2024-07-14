@@ -5,14 +5,14 @@
 #'field if no specific hierarchy is provided. It uses exiftool
 #'to manipulate the metadata and ensure that only the desired changes are applied.
 #'
-#' @inheritParams ti_get_hs
+#' @inheritParams mm_get_hs
 #' @param hierarchy A named character vector, e.g c("Species" = "Vulture") specifying the hierarchy to be removed.
 #' If NULL, the entire `Hierarchical Subject` field is removed.
 #'
 #' @return message indicating image updated
 #' @export
 #'
-ti_remove_hs <- function(path, hierarchy = NULL) {
+mm_remove_hs <- function(path, hierarchy = NULL) {
 
   exiftool_path <- paste0(system.file(package = "tagim"), "/exiftool/exiftool.exe")
   cmd_remove_all <- sprintf('%s -HierarchicalSubject= %s',

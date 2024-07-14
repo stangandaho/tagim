@@ -1,5 +1,8 @@
 #exportPattern("^[[:alpha:]]+")
 
 
-export(ti_read_image)
-export(ti_get_metadata)
+export(mm_create_hs)
+export(mm_get_metadata)
+export(mm_stack_df)
+export(mm_remove_hs)
+export(mm_get_hs)

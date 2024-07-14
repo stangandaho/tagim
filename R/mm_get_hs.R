@@ -1,6 +1,6 @@
 #' Retrieve Hierarchical Subject Values from Image Metadata
 #'
-#'The ti_get_hs function retrieves the values from the `Hierarchical Subject`
+#'The function retrieves the values from the `Hierarchical Subject`
 #' field of an image's metadata. It uses exiftool to read the metadata and processes
 #' the results to extract and return the unique hierarchical subjects.
 #'
@@ -25,7 +25,7 @@
 #' @export
 #'
 
-ti_get_hs <- function(path){
+mm_get_hs <- function(path){
 
   exiftool_path <- paste0(system.file(package = "tagim"), "/exiftool/exiftool.exe")
   cmd_read <- sprintf('%s -HierarchicalSubject %s',

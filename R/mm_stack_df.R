@@ -17,7 +17,7 @@
 #' @export
 #'
 
-ti_stack_df <- function(df_list) {
+mm_stack_df <- function(df_list) {
   if (!is.list(df_list)) {
     stop(sprintf("Input is %s but should be a plain list of dataframe items to be stacked",
                  class(df_list)[1L]))
