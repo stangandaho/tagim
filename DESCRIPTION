@@ -1,12 +1,13 @@
 Package: maimer
 Type: Package
-Title: Add tags to image metadata
-Version: 0.1.0
+Title: Edit and extract cameras trap data
+Version: 0.2.0
 Imports: shiny, shinyFiles, bs4Dash, shinyTree, magick
-Author: Stanislas Mahussi Gadaho
-Maintainer: Stanislas Mahussi Gandao <gandahostanmah@gmail.com>
-Description: maimer helps to manage image metadata. Users 
-    have also a graphical interface based on shiny.
+Author: Stanislas Mahussi Gandaho
+Maintainer: Stanislas Mahussi Gandaho <stangandaho@gmail.com>
+Description: maimer is an R package to manage images' metadata. 
+    The package helps to edit and extract data from 
+    cameras trap image or video. The Graphical User Interface integrated speeds up the process.
 License: MIT
 Encoding: UTF-8
 LazyData: true
