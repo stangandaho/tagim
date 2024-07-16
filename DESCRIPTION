@@ -2,7 +2,7 @@ Package: maimer
 Type: Package
 Title: Add tags to image metadata
 Version: 0.1.0
-Imports: shiny, shinyFiles, bs4Dash, magick
+Imports: shiny, shinyFiles, bs4Dash, shinyTree, magick
 Author: Stanislas Mahussi Gadaho
 Maintainer: Stanislas Mahussi Gandao <gandahostanmah@gmail.com>
 Description: maimer helps to manage image metadata. Users 
