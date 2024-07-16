@@ -1,6 +1,5 @@
 #exportPattern("^[[:alpha:]]+")
 
-
 export(mm_create_hs)
 export(mm_get_metadata)
 export(mm_stack_df)
