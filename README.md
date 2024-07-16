@@ -6,7 +6,7 @@
    - 🗂️ Batch editing capabilities to modify metadata for multiple files simultaneously.  
    - 🖼️ Extract metadata, including timestamps, GPS coordinates, camera settings, and more from various image and video formats commonly used in camera traps.  
 
-![Maimer App User Interface](https://github.com/stangandaho/maimer/tree/main/inst/app/app_interface.jpg)
+![Maimer App User Interface](https://github.com/stangandaho/maimer/blob/main/inst/app/app_interface.jpg?raw=true)
 
 
 The functions are designed to work well with other R packages such as 
