@@ -1,3 +1,9 @@
+  <!-- badges: start -->
+  [![R-CMD-check](https://github.com/stangandaho/tagim/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stangandaho/maimer/actions/workflows/R-CMD-check.yaml)
+  <!-- badges: end -->
+
+[![codecov](https://codecov.io/gh/stangandaho/maimer/graph/badge.svg?token=LDM57A3MWL)](https://codecov.io/gh/stangandaho/maimer)
+
 ## maimer
 *'maimer'* is an R package designed for efficient management of image metadata, with a particular focus on camera trap images and videos. It provides tools to edit, extract, and manage metadata seamlessly, streamlining workflows for researchers, conservationists, and anyone working with large collections of camera trap data.
 
@@ -6,7 +12,7 @@
    - 🗂️ Batch editing capabilities to modify metadata for multiple files simultaneously.  
    - 🖼️ Extract metadata, including timestamps, GPS coordinates, camera settings, and more from various image and video formats commonly used in camera traps.  
 
-![Maimer App User Interface](https://github.com/stangandaho/maimer/blob/main/inst/app/app_interface.jpg?raw=true)
+![Maimer App User Interface](https://github.com/stangandaho/maimer/blob/main/app_interface.jpg?raw=true)
 
 
 The functions are designed to work well with other R packages such as 
