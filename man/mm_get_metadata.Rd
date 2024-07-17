@@ -41,9 +41,9 @@ temp_image_path <- file.path(tempdir(), "image.jpg")
 download.file(url = image_url, destfile = temp_image_path, mode = "wb")
 
 # Extract metadata from the downloaded image
-metadata <- ti_get_metadata(path = temp_image_path)
+metadata <- mm_get_metadata(path = temp_image_path)
 
 # Extract metadata from all images in a directory (non-recursive)
-metadata_dir <- ti_get_metadata(path = tempdir(), recursive = FALSE)
+metadata_dir <- mm_get_metadata(path = tempdir(), recursive = FALSE)
 
 }

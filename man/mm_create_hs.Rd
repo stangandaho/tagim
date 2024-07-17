@@ -26,12 +26,12 @@ temp_image_path <- file.path(tempdir(), "image.jpg")
 # Download the image from the internet
 download.file(url = image_url, destfile = temp_image_path, mode = "wb")
 
-# Get Hierarchical Subject from the image - Before use ti_create_hs()
-ti_get_hs(path = temp_image_path) #==> NULL
+# Get Hierarchical Subject from the image - Before use mm_create_hs()
+mm_get_hs(path = temp_image_path) #==> NULL
 
-ti_create_hs(path = temp_image_path, value = c("Species" = "Vulture"))
+mm_create_hs(path = temp_image_path, value = c("Species" = "Vulture"))
 
-# Get Hierarchical Subject from the image - Before use ti_create_hs()
-ti_get_hs(path = temp_image_path) #==> "Species|Vulture"
+# Get Hierarchical Subject from the image - Before use mm_create_hs()
+mm_get_hs(path = temp_image_path) #==> "Species|Vulture"
 
 }

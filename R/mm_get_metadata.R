@@ -4,12 +4,14 @@ get_metadata <- function(path){
 
   if (!file.exists(path)) {
     stop("Path must be a directory path or file path")
+  }else{
+
+  cmd <- paste(normalizePath(paste0(base::system.file(package = "maimer"), "/app/exiftool.exe")),
+               normalizePath(path))
+  print(path)
+  metadata_df <- system(cmd, intern = T)
   }
 
-  exiftool_path <- system.file(package = "tagim")
-  cmd <- paste(normalizePath(paste0(exiftool_path, "/exiftool/exiftool.exe")), shQuote(normalizePath(path)))
-
-  metadata_df <- system(cmd, intern = T)
 
   out_df <- list(); idx <- 0
   for (tgs in metadata_df) {
@@ -59,29 +61,35 @@ get_metadata <- function(path){
 #' download.file(url = image_url, destfile = temp_image_path, mode = "wb")
 #'
 #' # Extract metadata from the downloaded image
-#' metadata <- ti_get_metadata(path = temp_image_path)
+#' metadata <- mm_get_metadata(path = temp_image_path)
 #'
 #' # Extract metadata from all images in a directory (non-recursive)
-#' metadata_dir <- ti_get_metadata(path = tempdir(), recursive = FALSE)
+#' metadata_dir <- mm_get_metadata(path = tempdir(), recursive = FALSE)
 #'
 #' @export
-mm_get_metadata <- function(path, recursive = FALSE,
+mm_get_metadata <- function(path,
+                            recursive = FALSE,
                             save_file = FALSE,
                             file_name = "") {
 
   if (dir.exists(path)) {
     img_in_path <- list.files(path = path, pattern = "\\.(jpe?g|JPE?G)$",
                               full.names = T, recursive = recursive)
+
+    if (length(img_in_path) == 0) {
+      stop(sprintf("Any file ended by jpg|JPG|jpeg|JPEG in %s/", path))
+    }
     path <- img_in_path[1]
     rbind_list <- list()
-    for (img in seq_along(img_in_path)) {
+    for (img in 1:length(img_in_path)) {
       message(
         paste0("Processing image ", basename(img_in_path[[img]]),
               " (", img, " of ", length(img_in_path), ")")
       )
       rbind_list[[img]] <- get_metadata(path = img_in_path[[img]])
     }
-    metadata_df <- ti_stack_df(rbind_list)
+
+    metadata_df <- mm_stack_df(rbind_list)
 
   } else if (file.exists(path)) {
     metadata_df <- get_metadata(path = path)
@@ -90,9 +98,9 @@ mm_get_metadata <- function(path, recursive = FALSE,
 
   if (save_file) {
     if (file_name == "") {
-      file_name <- paste0(dirname(path), "/metadata.csv")
+      file_name <- file.path(dirname(path), "metadata.csv")
     }else if( grepl(".csv$", file_name) ){
-      file_name <- paste0(getwd(), "/", file_name)
+      file_name <- file.path(dirname(path), file_name)
     }else{
       stop("Specify a correct file name (ended by .csv)")
     }

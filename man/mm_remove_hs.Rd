@@ -16,8 +16,25 @@ If NULL, the entire \verb{Hierarchical Subject} field is removed.}
 message indicating image updated
 }
 \description{
-The ti_remove_hs function removes a specific hierarchy from the
+The mm_remove_hs function removes a specific hierarchy from the
 \verb{Hierarchical Subject} field in an image's metadata, or it removes the entire
 field if no specific hierarchy is provided. It uses exiftool
 to manipulate the metadata and ensure that only the desired changes are applied.
+}
+\examples{
+
+# Define the URL of the image to be downloaded
+image_url <- "https://cdn.britannica.com/02/162502-050-FEEA94DE/Vulture.jpg"
+
+# Define the path to save the downloaded image
+temp_image_path <- file.path(tempdir(), "image.jpg")
+
+# Download the image from the internet
+download.file(url = image_url, destfile = temp_image_path, mode = "wb")
+
+# Get Hierarchical Subject from the image
+no_hs <- mm_get_hs(path = temp_image_path)
+mm_create_hs(temp_image_path, c("A" = "AB"))
+mm_remove_hs(temp_image_path, c("A" = "AB"))
+
 }

@@ -29,6 +29,6 @@ temp_image_path <- file.path(tempdir(), "image.jpg")
 download.file(url = image_url, destfile = temp_image_path, mode = "wb")
 
 # Get Hierarchical Subject from the image
-ti_get_hs(path = temp_image_path)
+mm_get_hs(path = temp_image_path)
 
 }

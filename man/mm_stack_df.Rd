@@ -23,5 +23,5 @@ x <- data.frame(age = 15, fruit = "Apple", weight = 12)
 y <- data.frame(age = 51, fruit = "Tomato")
 z <- data.frame(age = 26, fruit = "Lemo", weight = 12, height = 45)
 alldf <- list(x,y,z)
-ti_stack_df(alldf)
+mm_stack_df(alldf)
 }

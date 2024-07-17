@@ -20,14 +20,14 @@
 #' download.file(url = image_url, destfile = temp_image_path, mode = "wb")
 #'
 #' # Get Hierarchical Subject from the image
-#' ti_get_hs(path = temp_image_path)
+#' mm_get_hs(path = temp_image_path)
 #'
 #' @export
 #'
 
 mm_get_hs <- function(path){
 
-  exiftool_path <- paste0(system.file(package = "tagim"), "/exiftool/exiftool.exe")
+  exiftool_path <- paste0(base::system.file(package = "maimer"), "/app/exiftool.exe")
   cmd_read <- sprintf('%s -HierarchicalSubject %s',
                       exiftool_path, shQuote(normalizePath(path)))
   current_values <- system(cmd_read, intern = TRUE)

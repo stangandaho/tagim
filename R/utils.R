@@ -1,3 +1,5 @@
+#' Deep list
+#'
 #' @description
 #' Convert list to tree object format
 #'
@@ -15,6 +17,8 @@ deep_list <- function(list_item){
   return(setlist)
 }
 
+#' Pair to list
+#'
 #' @description
 #' unction that converts a vector into a list with pairs of elements (i.e., two-by-two)
 #'
@@ -32,6 +36,7 @@ pair_to_list <- function(vec) {
 }
 
 
+#' Check seperator
 #' @description
 #' Check and return the seperator in the file (dataset to read)
 #'
@@ -60,20 +65,20 @@ check_sep <- function(file_path){
   return(sep)
 }
 
-
+#' Update list
 #' @description
-#' Update an existing list basing on item in second list. 
-#' If the element is in the list, append the value from second list 
+#' Update an existing list basing on item in second list.
+#' If the element is in the list, append the value from second list
 #' and ensure the values are unique. If the element is not in the list, add it with its value
 #'
 update_list <- function(first_list, second_list) {
   for (name in names(second_list)) {
     if (name %in% names(first_list)) {
-      # 
+      #
       combined_values <- unique(c(first_list[[name]], second_list[[name]]))
       first_list[[name]] <- combined_values
     } else {
-      # 
+      #
       first_list[[name]] <- second_list[[name]]
     }
   }
