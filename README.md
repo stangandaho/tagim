@@ -1,5 +1,5 @@
-  <!-- badges: start -->
-  [![R-CMD-check](https://github.com/stangandaho/tagim/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stangandaho/maimer/actions/workflows/R-CMD-check.yaml)
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/stangandaho/maimer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stangandaho/maimer/actions/workflows/R-CMD-check.yaml)
   <!-- badges: end -->
 
 [![codecov](https://codecov.io/gh/stangandaho/maimer/graph/badge.svg?token=LDM57A3MWL)](https://codecov.io/gh/stangandaho/maimer)
