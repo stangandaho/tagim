@@ -16,12 +16,12 @@ jobs:
       fail-fast: false
       matrix:
         config:
-             - {os: macos-latest,   r: 'release'}
-             - {os: windows-latest, r: 'release'}
-             - {os: ubuntu-latest,   r: 'release'}
-             #- {os: windows-latest, r: '3.6'}
-             #- {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
-             #- {os: ubuntu-latest,   r: 'oldrel-1'}
+          - {os: macos-latest,   r: 'release'}
+          - {os: windows-latest, r: 'release'}
+          - {os: ubuntu-latest,   r: 'release'}
+          # - {os: windows-latest, r: '3.6'}
+          # - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
+          # - {os: ubuntu-latest,   r: 'oldrel-1'}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
@@ -92,7 +92,7 @@ jobs:
           path: check
 
       - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4.0.1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN_MAIMER }}
-        slug: stangandaho/maimer
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN_MAIMER }}
+          slug: stangandaho/maimer
