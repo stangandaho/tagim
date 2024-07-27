@@ -1,7 +1,7 @@
 
 
 
-ui <- dashboardPage(
+ui <- bs4Dash::dashboardPage(
   header = bs4Dash::dashboardHeader(
     sidebarIcon = icon("grip"), fixed = T, compact = T,
     shiny::tagList(
@@ -28,16 +28,30 @@ ui <- dashboardPage(
     fluidPage(
       fluidRow(
         column(width = 8,
-               imageOutput("selectedImage", width = "100%", height = "100%")),
+               tags$div(
+                 id = "selected_img", imageOutput("selectedImage", width = "100%", height = "100%")),
+               tabsetPanel(
+                 #tags$div(
+                  tabPanel(title = "Metadata", tags$div( tableOutput("metadata_table"), style = "overflow-x: scroll;")),
+
+                 #),
+                 tabPanel(title = "Location", leafletOutput("camera_location"))
+               )
+               ),
         column(width = 4,
-               actionButton("add_sh", label = "Insert tag", icon = icon("file-pen")),
-               uiOutput("sh_set"),
+               actionButton("add_hs", label = "Insert tag", icon = icon("file-pen")),
+               uiOutput("hs_set"),
                tagList(actionButton("apply_insertion", "Apply"),
                        actionButton("delete_tag", "Delete", icon = icon("trash"))),
                tags$br(), tags$br(),
                # Tree
-               shinyTree::shinyTree("tag_hierarchy", contextmenu = FALSE, dragAndDrop = FALSE,
-                         search = FALSE, unique = TRUE, sort = FALSE))
+               shinyTree::shinyTree("tag_hierarchy",
+                         search = FALSE, sort = FALSE),
+               # End tree
+               tagList(
+                 actionButton("save_json", "Save", icon = icon("save")),
+                 actionButton("process_images", "Process images", icon = icon("images"))
+               ))
       )
     )
     ),
