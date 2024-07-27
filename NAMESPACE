@@ -5,6 +5,7 @@ export(mm_get_metadata)
 export(mm_stack_df)
 export(mm_remove_hs)
 export(mm_get_hs)
+export(mm_app)
 
 
 # Import
