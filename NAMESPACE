@@ -63,6 +63,10 @@ importFrom("bs4Dash", "dashboardBody")
 importFrom("bs4Dash", "dashboardPage")
 importFrom("bs4Dash", "dashboardSidebar")
 
+#leaflet
+importFrom("leaflet", "leafletOutput")
+importFrom("leaflet", "renderLeaflet")
+
 
 importFrom("shinyFiles", "getVolumes")
 importFrom("shinyFiles", "parseDirPath")

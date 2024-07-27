@@ -1,4 +1,4 @@
-pkgs <- c("shiny", "shinyFiles", "bs4Dash", "shinyTree")
+pkgs <- c("shiny", "shinyFiles", "bs4Dash", "shinyTree", "leaflet")
 
 for (pkg in pkgs) {
   if (pkg %in% rownames(installed.packages())) {
