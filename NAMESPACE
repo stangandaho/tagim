@@ -57,6 +57,13 @@ importFrom(shiny, updateSelectInput )
 importFrom(shiny, updateTextInput)
 importFrom(shiny, observe)
 
+#ds4Dash
+importFrom("bs4Dash", "dashboardHeader")
+importFrom("bs4Dash", "dashboardBody")
+importFrom("bs4Dash", "dashboardPage")
+importFrom("bs4Dash", "dashboardSidebar")
+
+
 importFrom("shinyFiles", "getVolumes")
 importFrom("shinyFiles", "parseDirPath")
 importFrom("shinyFiles", "parseFilePaths")
